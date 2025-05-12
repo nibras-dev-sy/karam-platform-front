@@ -33,12 +33,12 @@ export default function LanguageSwitcher({
         }
       }}
     >
-      <SelectTrigger className="w-24 h-8 text-xs border-gray-300 bg-white">
+      <SelectTrigger className="w-16 h-8 text-xs border-gray-300 bg-white">
         <SelectValue />
       </SelectTrigger>
       <SelectContent align="end">
-        <SelectItem value="en">English</SelectItem>
-        <SelectItem value="ar">العربية</SelectItem>
+        <SelectItem value="en">En</SelectItem>
+        <SelectItem value="ar">Ar</SelectItem>
       </SelectContent>
     </Select>
   )

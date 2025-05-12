@@ -7,7 +7,9 @@
     "signIn": "Sign In",
     "signUp": "Sign Up",
     "search": "Search",
-    "languageSwitcher": "العربية"
+    "languageSwitcher": "العربية",
+    "logout": "Logout",
+    "dashboard": "Dashboard"
   },
   "hero": {
     "title": "Unlock Your Potential with Online Learning",

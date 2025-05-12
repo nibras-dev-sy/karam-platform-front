@@ -7,7 +7,9 @@
     "signIn": "تسجيل الدخول",
     "signUp": "إنشاء حساب",
     "search": "بحث",
-    "languageSwitcher": "English"
+    "languageSwitcher": "English",
+    "logout": "تسجيل الخروج",
+    "dashboard": "لوحة التحكم"
   },
   "hero": {
     "title": "اكتشف إمكانياتك مع التعلم عبر الإنترنت",
