@@ -51,12 +51,13 @@ export default function Header({
         <div className="flex items-center space-x-5">
           {user ? (
             <>
-              <Link href={`/${lang}/dashboard`} className="text-[#547792] font-medium hover:text-[#213448] transition-colors cursor-pointer">
+              <Link href={`/${lang}/dashboard`}
+                className="bg-[#547792] text-white px-5 py-2 rounded-md font-medium hover:bg-[#213448] transition-colors cursor-pointer">
                 {dictionary.navbar.dashboard}
               </Link>
               <button
                 onClick={handleLogout}
-                className="bg-[#547792] text-white px-5 py-2 rounded-md font-medium hover:bg-[#213448] transition-colors cursor-pointer"
+                className="text-[#e06251] font-medium hover:text-[#c45445] transition-colors cursor-pointer"
               >
                 {dictionary.navbar.logout || "Logout"}
               </button>
