@@ -1,3 +1,49 @@
 {
-
+  "navbar": {
+    "home": "Home",
+    "courses": "Courses",
+    "about": "About Us",
+    "contact": "Contact",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "search": "Search",
+    "languageSwitcher": "العربية"
+  },
+  "hero": {
+    "title": "Unlock Your Potential with Online Learning",
+    "subtitle": "Discover thousands of courses taught by industry experts and enhance your skills from anywhere, anytime.",
+    "explore": "Explore Courses",
+    "learnMore": "Learn More"
+  },
+  "stats": {
+    "title": "Our Impact in Numbers",
+    "subtitle": "Join thousands of learners who have transformed their careers through our platform",
+    "students": "Active Students",
+    "courses": "Courses Available",
+    "instructors": "Expert Instructors",
+    "satisfaction": "Satisfaction Rate"
+  },
+  "cta": {
+    "title": "Ready to Start Your Learning Journey?",
+    "subtitle": "Join thousands of students and transform your career with our expert-led courses.",
+    "getStarted": "Get Started Today",
+    "browse": "Browse All Courses"
+  },
+  "footer": {
+    "about": "Empowering learners worldwide with quality education and skills for the future.",
+    "explore": "Explore",
+    "categories": "Categories",
+    "subscribe": "Subscribe",
+    "subscribeDesc": "Stay updated with our latest courses and offers",
+    "emailPlaceholder": "Your email address",
+    "subscribeBtn": "Subscribe",
+    "terms": "By subscribing, you agree to our Terms of Service and Privacy Policy",
+    "copyright": "© 2025 Online Academy. All rights reserved.",
+    "blog": "Blog",
+    "programming": "Programming",
+    "dataScience": "Data Science",
+    "business": "Business",
+    "design": "Design",
+    "marketing": "Marketing"
+  }
 }

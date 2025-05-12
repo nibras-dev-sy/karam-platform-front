@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname, useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
+import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select"
 import { useCallback } from "react"
 
 export default function LanguageSwitcher({
@@ -17,26 +17,29 @@ export default function LanguageSwitcher({
   const redirectedPathName = useCallback(
     (locale: string) => {
       if (!pathName) return "/"
-
       const segments = pathName.split("/")
       segments[1] = locale
-
       return segments.join("/")
     },
     [pathName],
   )
 
-  const otherLang = currentLang === "en" ? "ar" : "en"
-  const otherLangName = currentLang === "en" ? "العربية" : "English"
-
   return (
-    <Button
-      variant="outline"
-      onClick={() => router.push(redirectedPathName(otherLang))}
-      className="rounded-full bg-white/20 text-white hover:bg-white hover:text-blue-700 border-white"
+    <Select
+      value={currentLang}
+      onValueChange={val => {
+        if (val !== currentLang) {
+          router.push(redirectedPathName(val))
+        }
+      }}
     >
-      {switchLabel ? `${switchLabel} ` : ""}
-      {otherLangName}
-    </Button>
+      <SelectTrigger className="w-24 h-8 text-xs border-gray-300 bg-white">
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent align="end">
+        <SelectItem value="en">English</SelectItem>
+        <SelectItem value="ar">العربية</SelectItem>
+      </SelectContent>
+    </Select>
   )
 }
