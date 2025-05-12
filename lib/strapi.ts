@@ -28,4 +28,18 @@ export async function signUpStrapi({ username, email, password }: { username: st
     throw new Error(data.error?.message || "Sign up failed");
   }
   return data; // contains jwt and user
+}
+
+export async function getCoursesStrapi(jwt: string) {
+  const res = await fetch(`${STRAPI_URL}/api/courses`, {
+    headers: {
+      "Authorization": `Bearer ${jwt}`,
+    },
+    cache: "no-store",
+  })
+  if (!res.ok) {
+    throw new Error("Failed to fetch courses")
+  }
+  const data = await res.json()
+  return data.data
 } 
