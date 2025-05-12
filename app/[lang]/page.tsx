@@ -6,7 +6,7 @@ export default async function Home({
 }: {
   params: { lang: Locale }
 }) {
-  const { lang } = params
+  const { lang } = await params
   const dictionary = await getDictionary(lang)
 
   return (

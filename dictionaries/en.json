@@ -45,5 +45,28 @@
     "business": "Business",
     "design": "Design",
     "marketing": "Marketing"
+  },
+  "auth": {
+    "unlock": "Unlock Your Potential",
+    "joinThousands": "Join thousands of learners worldwide",
+    "trustedBy": "Trusted by over 25,000 students globally",
+    "welcomeBack": "Welcome back",
+    "signInSubtitle": "Sign in to continue your learning journey",
+    "email": "Email address",
+    "emailPlaceholder": "your.email@example.com",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "rememberMe": "Remember me for 30 days",
+    "signIn": "Sign In",
+    "orContinueWith": "or continue with",
+    "noAccount": "Don't have an account?",
+    "signUpForFree": "Sign up for free",
+    "createAccount": "Create your account",
+    "signUpSubtitle": "Sign up to start your learning journey",
+    "name": "Full Name",
+    "namePlaceholder": "Your full name",
+    "signUp": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "signInHere": "Sign in here"
   }
 }

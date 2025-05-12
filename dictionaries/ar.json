@@ -45,5 +45,28 @@
     "business": "الأعمال",
     "design": "التصميم",
     "marketing": "التسويق"
+  },
+  "auth": {
+    "unlock": "اكتشف إمكانياتك",
+    "joinThousands": "انضم إلى آلاف المتعلمين حول العالم",
+    "trustedBy": "موثوق به من أكثر من 25,000 طالب حول العالم",
+    "welcomeBack": "مرحبًا بعودتك",
+    "signInSubtitle": "سجّل الدخول لمتابعة رحلتك التعليمية",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "your@email.com",
+    "password": "كلمة المرور",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "rememberMe": "تذكرني لمدة 30 يومًا",
+    "signIn": "تسجيل الدخول",
+    "orContinueWith": "أو تابع عبر",
+    "noAccount": "ليس لديك حساب؟",
+    "signUpForFree": "أنشئ حسابًا مجانًا",
+    "createAccount": "أنشئ حسابك",
+    "signUpSubtitle": "سجّل للحصول على تجربة تعليمية مميزة",
+    "name": "الاسم الكامل",
+    "namePlaceholder": "اسمك الكامل",
+    "signUp": "إنشاء حساب",
+    "haveAccount": "لديك حساب بالفعل؟",
+    "signInHere": "سجّل الدخول من هنا"
   }
 }
