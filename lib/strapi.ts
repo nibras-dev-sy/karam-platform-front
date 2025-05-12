@@ -42,4 +42,19 @@ export async function getCoursesStrapi(jwt: string) {
   }
   const data = await res.json()
   return data.data
+}
+
+export async function activateCourseCodeStrapi(code: string, jwt: string) {
+  const res = await fetch(`${STRAPI_URL}/api/activation-codes/activate?code=${encodeURIComponent(code)}`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+  })
+  const data = await res.json()
+  if (!res.ok) {
+    throw new Error(data?.error?.message || data?.message || "Activation failed")
+  }
+  return data
 } 
