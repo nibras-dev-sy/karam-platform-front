@@ -39,12 +39,9 @@ export default function Header({
     <header id="header" className="bg-white shadow-sm py-4 sticky top-0 z-50">
       <div className="container mx-auto px-5 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <div className="flex items-center">
-            <div className="w-10 h-10 bg-[#213448] flex items-center justify-center rounded-md">
-              <span className="text-white text-xl font-bold">OA</span>
-            </div>
-            <div className="ml-2 text-xl font-bold text-[#213448]">Online Academy</div>
-          </div>
+          <Link href="/">
+            <img src="/logo.png" alt="Logo" className="h-12 w-auto" />
+          </Link>
         </div>
         <nav className="hidden md:flex items-center space-x-8">
           <span className="text-[#213448] font-medium border-b-2 border-[#547792] cursor-pointer">{dictionary.navbar.home}</span>

@@ -58,10 +58,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             className={`transition-all duration-300 ${sidebarOpen ? "w-64" : "w-16"} bg-[#213448] text-white h-full flex flex-col fixed`}
           >
             <div className={`p-5 border-b border-[#2e4a67] flex items-center ${sidebarOpen ? "justify-start" : "justify-center"}`}>
-              <div className="w-10 h-10 bg-white flex items-center justify-center rounded-md">
-                <span className="text-[#213448] text-xl font-bold">OA</span>
-              </div>
-              {sidebarOpen && <div className="ml-2 text-xl font-bold">Online Academy</div>}
+            <Link href="/">
+              <img src={sidebarOpen ? "/logo.png" : "/logo_small.png"} alt="Logo" className="h-12 w-auto h-9 w-auto filter invert brightness-0" />
+            </Link>
             </div>
             <div className="p-3 flex-grow overflow-y-auto">
               <nav>
@@ -100,7 +99,13 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             </div>
           </div>
           {/* Main Content */}
-          <div id="main-content" className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-16"} flex-1 bg-[#ECEFCA] overflow-y-auto`}>
+          <div
+            id="main-content"
+            className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-16"} flex-1 bg-[#ECEFCA] overflow-y-auto`}
+            onClick={() => {
+              if (sidebarOpen) setSidebarOpen(false)
+            }}
+          >
             {/* Top Header */}
             <header id="header" className="bg-white shadow-sm py-4 px-6 flex items-center justify-between sticky top-0 z-10">
               

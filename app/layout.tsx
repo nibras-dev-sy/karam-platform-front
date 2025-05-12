@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Online Academy",
   description: "",
-  generator: 'v0.dev'
+  generator: 'v0.dev',
 }
 
 export default function RootLayout({
@@ -19,6 +19,7 @@ export default function RootLayout({
     <html>
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <link rel="icon" type="image/png" href="/logo.png" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
