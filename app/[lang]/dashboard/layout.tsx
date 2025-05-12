@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react"
 import { Inter, Cairo } from "next/font/google"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 
@@ -22,9 +22,26 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const pathname = usePathname()
   const router = useRouter()
+  const [username, setUsername] = useState<string>("")
 
   // Extract lang from pathname (e.g., /en/dashboard)
   const lang = pathname.split("/")[1] || "en"
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const userStr = localStorage.getItem("strapi_user")
+      if (userStr) {
+        try {
+          const user = JSON.parse(userStr)
+          setUsername(user.username || user.name || "User")
+        } catch {
+          setUsername("User")
+        }
+      } else {
+        setUsername("")
+      }
+    }
+  }, [])
 
   function handleLogout() {
     localStorage.clear()
@@ -106,7 +123,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 <div className="relative">
                   <button className="flex items-center space-x-2">
                     <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="User" className="w-10 h-10 rounded-full border-2 border-[#547792]" />
-                    <span className="text-[#213448] font-medium">Michael Thompson</span>
+                    <span className="text-[#213448] font-medium">{username || "User"}</span>
                     <i className="fa-solid fa-chevron-down text-gray-500 text-sm"></i>
                   </button>
                 </div>
