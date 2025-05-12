@@ -21,7 +21,7 @@ export default function SignUpForm({ dictionary, lang }: { dictionary: any; lang
       const data = await signUpStrapi({ username: name, email, password })
       localStorage.setItem("strapi_jwt", data.jwt)
       localStorage.setItem("strapi_user", JSON.stringify(data.user))
-      const redirect = searchParams.get("redirect") || `/${lang}`
+      const redirect = searchParams.get("redirect") || `/${lang}/p/sign-in`
       router.push(redirect)
     } catch (err: any) {
       setError(err.message)

@@ -5,7 +5,11 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { Inter, Cairo } from "next/font/google"
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const inter = Inter({ 
+  subsets: ["latin"], 
+  variable: "--font-inter" 
+})
+
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   variable: "--font-arabic",
