@@ -3,6 +3,8 @@
 import type { ReactNode } from "react"
 import { Inter, Cairo } from "next/font/google"
 import { useState } from "react"
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -18,6 +20,16 @@ const cairo = Cairo({
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const pathname = usePathname()
+  const router = useRouter()
+
+  // Extract lang from pathname (e.g., /en/dashboard)
+  const lang = pathname.split("/")[1] || "en"
+
+  function handleLogout() {
+    localStorage.clear()
+    router.push(`/${lang}/p`)
+  }
 
   return (
     <html lang="en" className={`${inter.variable} ${cairo.variable}`}>
@@ -47,16 +59,16 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <nav>
                 <ul className="space-y-2">
                   <li className="mb-1">
-                    <span className={`flex items-center p-3 rounded-md bg-[#547792] text-white cursor-pointer ${!sidebarOpen ? "justify-center" : ""}`}>
+                    <Link href={`./`} className={`flex items-center p-3 rounded-md cursor-pointer ${pathname.endsWith("dashboard") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
                       <i className="fa-solid fa-gauge-high w-5 text-center mr-3"></i>
                       {sidebarOpen && <span>Dashboard</span>}
-                    </span>
+                    </Link>
                   </li>
                   <li className="mb-1">
-                    <span className={`flex items-center p-3 rounded-md hover:bg-[#2e4a67] transition-colors cursor-pointer ${!sidebarOpen ? "justify-center" : ""}`}>
+                    <Link href={`./dashboard/my-courses`} className={`flex items-center p-3 rounded-md cursor-pointer ${pathname.includes("my-courses") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
                       <i className="fa-solid fa-book-open w-5 text-center mr-3"></i>
                       {sidebarOpen && <span>My Courses</span>}
-                    </span>
+                    </Link>
                   </li>
                 </ul>
               </nav>
@@ -73,10 +85,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
             <div className={`p-5 border-t border-[#2e4a67] ${!sidebarOpen ? "justify-center" : ""}`}>
-              <span className={`flex items-center p-3 rounded-md hover:bg-[#2e4a67] transition-colors cursor-pointer ${!sidebarOpen ? "justify-center" : ""}`}>
+              <button onClick={handleLogout} className={`flex items-center p-3 rounded-md hover:bg-[#2e4a67] transition-colors cursor-pointer w-full text-left ${!sidebarOpen ? "justify-center" : ""}`}>
                 <i className="fa-solid fa-arrow-right-from-bracket w-5 text-center mr-3"></i>
                 {sidebarOpen && <span>Logout</span>}
-              </span>
+              </button>
             </div>
           </div>
           {/* Main Content */}
