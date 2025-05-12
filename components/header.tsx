@@ -32,8 +32,12 @@ export default function Header({
           <button className="text-[#213448] hover:text-[#547792] transition-colors">
             <i className="fa-solid fa-magnifying-glass text-lg"></i>
           </button>
-          <span className="text-[#547792] font-medium hover:text-[#213448] transition-colors cursor-pointer">{dictionary.navbar.signIn}</span>
-          <span className="bg-[#547792] text-white px-5 py-2 rounded-md font-medium hover:bg-[#213448] transition-colors cursor-pointer">{dictionary.navbar.signUp}</span>
+          <Link href={`/${lang}/sign-in`} className="text-[#547792] font-medium hover:text-[#213448] transition-colors cursor-pointer">
+            {dictionary.navbar.signIn}
+          </Link>
+          <Link href={`/${lang}/sign-up`} className="bg-[#547792] text-white px-5 py-2 rounded-md font-medium hover:bg-[#213448] transition-colors cursor-pointer">
+            {dictionary.navbar.signUp}
+          </Link>
           <LanguageSwitcher currentLang={lang} switchLabel={dictionary.navbar.languageSwitcher} />
         </div>
       </div>

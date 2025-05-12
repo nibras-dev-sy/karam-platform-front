@@ -1,5 +1,6 @@
 import { getDictionary } from "@/lib/dictionary"
 import type { Locale } from "@/lib/i18n-config"
+import SignInForm from "./SignInForm"
 
 export default async function SignIn({ params }: { params: { lang: Locale } }) {
   const { lang } = params
@@ -46,66 +47,7 @@ export default async function SignIn({ params }: { params: { lang: Locale } }) {
           <div className="bg-white rounded-xl shadow-md p-8">
             <h1 className="text-2xl font-bold text-[#213448] mb-2">{dictionary.auth.welcomeBack}</h1>
             <p className="text-gray-600 mb-8">{dictionary.auth.signInSubtitle}</p>
-            <form id="signin-form">
-              {/* Email Field */}
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-[#213448] mb-2" htmlFor="email">
-                  {dictionary.auth.email}
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-                    <i className="fa-regular fa-envelope text-gray-500"></i>
-                  </div>
-                  <input
-                    id="email"
-                    type="email"
-                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#547792] focus:border-[#547792]"
-                    placeholder={dictionary.auth.emailPlaceholder}
-                    required
-                  />
-                </div>
-              </div>
-              {/* Password Field */}
-              <div className="mb-6">
-                <div className="flex justify-between items-center mb-2">
-                  <label className="block text-sm font-medium text-[#213448]" htmlFor="password">
-                    {dictionary.auth.password}
-                  </label>
-                  <span className="text-sm text-[#547792] hover:text-[#213448] transition-colors cursor-pointer">
-                    {dictionary.auth.forgotPassword}
-                  </span>
-                </div>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-                    <i className="fa-solid fa-lock text-gray-500"></i>
-                  </div>
-                  <input
-                    id="password"
-                    type="password"
-                    className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#547792] focus:border-[#547792]"
-                    placeholder="••••••••••"
-                    required
-                  />
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-4 cursor-pointer" id="toggle-password">
-                    <i className="fa-regular fa-eye text-gray-500"></i>
-                  </div>
-                </div>
-              </div>
-              {/* Remember Me */}
-              <div className="flex items-center mb-6">
-                <input type="checkbox" id="remember" className="w-4 h-4 text-[#547792] border-gray-300 rounded focus:ring-[#547792]" />
-                <label htmlFor="remember" className="ml-2 text-sm text-gray-600">{dictionary.auth.rememberMe}</label>
-              </div>
-              {/* Sign In Button */}
-              <button
-                id="signin-button"
-                type="submit"
-                className="w-full bg-[#213448] hover:bg-[#547792] text-white font-medium py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center"
-              >
-                {dictionary.auth.signIn}
-                <i className="fa-solid fa-arrow-right ml-2"></i>
-              </button>
-            </form>
+            <SignInForm dictionary={dictionary} lang={lang} />
             {/* Or Divider */}
             <div className="flex items-center my-6">
               <div className="flex-grow border-t border-gray-300"></div>
