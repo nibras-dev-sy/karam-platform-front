@@ -133,7 +133,7 @@
 }
 
 .font-arabic {
-  font-family: 'Cairo', 'Noto Sans Arabic', Arial, sans-serif;
+  font-family: var(--font-arabic), 'Cairo', 'Noto Sans Arabic', Arial, sans-serif;
 }
 .font-sans {
   font-family: var(--font-inter), Arial, sans-serif;
