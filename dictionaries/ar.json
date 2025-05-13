@@ -71,5 +71,26 @@
     "signUp": "إنشاء حساب",
     "haveAccount": "لديك حساب بالفعل؟",
     "signInHere": "سجّل الدخول من هنا"
+  },
+  "dashboard": {
+    "dashboard": "لوحة التحكم",
+    "myCourses": "دوراتي",
+    "profile": "الملف الشخصي",
+    "logout": "تسجيل الخروج",
+    "account": "الحساب",
+    "backToMyCourses": "العودة إلى دوراتي",
+    "completed": "مكتمل",
+    "markAsCompleted": "وضع كمكتمل",
+    "marking": "جارٍ الحفظ..."
+  },
+  "profile": {
+    "editProfile": "تعديل الملف الشخصي",
+    "email": "البريد الإلكتروني",
+    "newPassword": "كلمة مرور جديدة",
+    "passwordPlaceholder": "اتركها فارغة للاحتفاظ بكلمة المرور الحالية",
+    "saveChanges": "حفظ التغييرات",
+    "saving": "جارٍ الحفظ...",
+    "success": "تم تحديث الملف الشخصي بنجاح.",
+    "error": "فشل في تحديث الملف الشخصي"
   }
 }

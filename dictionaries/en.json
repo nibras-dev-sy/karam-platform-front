@@ -71,5 +71,26 @@
     "signUp": "Sign Up",
     "haveAccount": "Already have an account?",
     "signInHere": "Sign in here"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard",
+    "myCourses": "My Courses",
+    "profile": "Profile",
+    "logout": "Logout",
+    "account": "Account",
+    "backToMyCourses": "Back to My Courses",
+    "completed": "Completed",
+    "markAsCompleted": "Mark as completed",
+    "marking": "Marking..."
+  },
+  "profile": {
+    "editProfile": "Edit Profile",
+    "email": "Email",
+    "newPassword": "New Password",
+    "passwordPlaceholder": "Leave blank to keep current password",
+    "saveChanges": "Save Changes",
+    "saving": "Saving...",
+    "success": "Profile updated successfully.",
+    "error": "Failed to update profile"
   }
 }
