@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useParams } from "next/navigation"
+import { useParams, useRouter, usePathname } from "next/navigation"
 import { getLecturesByCourseStrapi } from "@/lib/strapi"
 
 export default function CoursePage() {
@@ -9,6 +9,10 @@ export default function CoursePage() {
   const [lectures, setLectures] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
+  const router = useRouter()
+  const pathname = usePathname()
+  const lang = pathname.split("/")[1] || "en"
+  const courseId = pathname.split("/")[4] || id
 
   useEffect(() => {
     async function fetchLectures() {
@@ -73,9 +77,10 @@ export default function CoursePage() {
           <div className="p-4 space-y-3">
             {lectures.map((lecture, idx) => (
               <div
-                key={lecture.documentId}
-                id={`lecture-${lecture.documentId}`}
-                className={`flex items-center justify-between p-3 ${lecture.progress ? "bg-[#ECEFCA]" : "hover:bg-gray-50"} rounded-lg`}
+                key={lecture.id}
+                id={`lecture-${lecture.id}`}
+                className={`flex items-center justify-between p-3 ${lecture.progress ? "bg-[#ECEFCA]" : "hover:bg-gray-50"} rounded-lg cursor-pointer`}
+                onClick={() => router.push(`/${lang}/dashboard/course/${courseId}/lecture/${lecture.documentId}`)}
               >
                 <div className="flex items-center">
                   {lecture.progress ? (

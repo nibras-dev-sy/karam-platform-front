@@ -72,4 +72,19 @@ export async function getLecturesByCourseStrapi(courseId: string, jwt: string) {
   }
   const data = await res.json()
   return data.data
+}
+
+export async function getLectureByDocumentIdStrapi(documentId: string, jwt: string) {
+  const url = `${STRAPI_URL}/api/lectures/${documentId}`
+  const res = await fetch(url, {
+    headers: {
+      "Authorization": `Bearer ${jwt}`,
+    },
+    cache: "no-store",
+  })
+  if (!res.ok) {
+    throw new Error("Failed to fetch lecture")
+  }
+  const data = await res.json()
+  return data.data
 } 
