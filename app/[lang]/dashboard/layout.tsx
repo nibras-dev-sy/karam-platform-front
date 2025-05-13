@@ -56,6 +56,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           <div
             id="sidebar"
             className={`transition-all duration-300 ${sidebarOpen ? "w-64" : "w-16"} bg-[#213448] text-white h-full flex flex-col fixed`}
+            onClick={() => {
+              if (!sidebarOpen) setSidebarOpen(true)
+            }}
           >
             <div className={`p-5 border-b border-[#2e4a67] flex items-center ${sidebarOpen ? "justify-start" : "justify-center"}`}>
             <Link href="/">
@@ -66,14 +69,14 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <nav>
                 <ul className="space-y-2">
                   <li className="mb-1">
-                    <Link href={`/${lang}/dashboard`} className={`flex items-center p-2 rounded-md cursor-pointer ${pathname.endsWith("dashboard") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
-                      <i className="fa-solid fa-gauge-high w-5 text-center mr-3"></i>
+                    <Link href={`/${lang}/dashboard`} className={`gap-2 flex items-center p-3 rounded-md cursor-pointer ${pathname.endsWith("dashboard") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
+                      <i className="fa-solid fa-gauge-high w-5 text-center"></i>
                       {sidebarOpen && <span>Dashboard</span>}
                     </Link>
                   </li>
                   <li className="mb-1">
-                    <Link href={`/${lang}/dashboard/my-courses`} className={`flex items-center p-3 rounded-md cursor-pointer ${pathname.includes("my-courses") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
-                      <i className="fa-solid fa-book-open w-5 text-center mr-3"></i>
+                    <Link href={`/${lang}/dashboard/my-courses`} className={`gap-2 flex items-center p-3 rounded-md cursor-pointer ${pathname.includes("my-courses") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
+                      <i className="fa-solid fa-book-open w-5 text-center"></i>
                       {sidebarOpen && <span>My Courses</span>}
                     </Link>
                   </li>
@@ -83,8 +86,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 <h3 className="text-sm uppercase text-gray-400 mb-4 font-medium">Account</h3>
                 <ul className="space-y-2">
                   <li className="mb-1">
-                    <span className="flex items-center p-3 rounded-md hover:bg-[#2e4a67] transition-colors cursor-pointer">
-                      <i className="fa-solid fa-user w-5 text-center mr-3"></i>
+                    <span className="gap-2 flex items-center p-3 rounded-md hover:bg-[#2e4a67] transition-colors cursor-pointer">
+                      <i className="fa-solid fa-user w-5 text-center"></i>
                       <span>Profile</span>
                     </span>
                   </li>
@@ -92,8 +95,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
             <div className={`p-5 border-t border-[#2e4a67] ${!sidebarOpen ? "justify-center" : ""}`}>
-              <button onClick={handleLogout} className={`flex items-center p-3 rounded-md hover:bg-[#2e4a67] transition-colors cursor-pointer w-full text-left ${!sidebarOpen ? "justify-center" : ""}`}>
-                <i className="fa-solid fa-arrow-right-from-bracket w-5 text-center mr-3"></i>
+              <button onClick={handleLogout} className={`gap-2 flex items-center p-3 rounded-md hover:bg-[#2e4a67] transition-colors cursor-pointer w-full text-left ${!sidebarOpen ? "justify-center" : ""}`}>
+                <i className="fa-solid fa-arrow-right-from-bracket w-5 text-center"></i>
                 {sidebarOpen && <span>Logout</span>}
               </button>
             </div>
@@ -101,7 +104,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           {/* Main Content */}
           <div
             id="main-content"
-            className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-16"} flex-1 bg-[#f7f5ed] overflow-y-auto`}
+            className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-16"} flex-1 bg-[#f7f5ed] overflow-y-auto flex flex-col min-h-screen`}
             onClick={() => {
               if (sidebarOpen) setSidebarOpen(false)
             }}
@@ -113,10 +116,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
               <div className="flex items-center">
               <button
-                className={`mr-4 border  rounded-full w-6 h-6 flex items-center justify-center focus:outline-none transition-transform ${sidebarOpen ? "" : "rotate-180"}`}
+                className={`mr-4 border rounded-full w-6 h-6 flex items-center justify-center focus:outline-none transition-transform ${sidebarOpen ? "" : "rotate-180"}`}
                 onClick={() => setSidebarOpen((open) => !open)}
                 aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
-                style={{ boxShadow: "0 0 0 2px #ECEFCA" }}
               >
                 <i className="fa-solid fa-chevron-left text-xs"></i>
               </button>
@@ -131,7 +133,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 </div>
               </div>
             </header>
-            <main className="p-8">{children}</main>
+            <main className="p-8 flex-1">{children}</main>
+            <footer className="w-full bg-gray-100 text-gray-500 text-xs text-center py-2 border-t border-gray-200 mt-auto">
+              © {new Date().getFullYear()} Al Karam Academy. All rights reserved.
+            </footer>
           </div>
         </div>
       </body>

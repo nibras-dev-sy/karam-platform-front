@@ -67,7 +67,7 @@ export default function MyCoursesPage() {
   return (
     <>
       <div className="flex justify-end mb-8">
-        <button className="bg-[#213448] hover:bg-[#547792] text-white font-medium py-2 px-6 rounded-lg transition duration-200" onClick={() => setShowPopup(true)}>
+        <button className="bg-[#213448] hover:bg-[#547792] text-white font-medium py-2 px-4 rounded-lg transition duration-200" onClick={() => setShowPopup(true)}>
           <i className="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
