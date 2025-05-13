@@ -51,7 +51,7 @@ export default function Header({
         <div className="flex items-center space-x-5">
           {user ? (
             <>
-              <Link href={`/${lang}/dashboard`}
+              <Link href={`/${lang}/dashboard/my-courses`}
                 className="bg-[#547792] text-white px-5 py-2 rounded-md font-medium hover:bg-[#213448] transition-colors cursor-pointer">
                 {dictionary.navbar.dashboard}
               </Link>

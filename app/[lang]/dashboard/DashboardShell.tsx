@@ -50,12 +50,14 @@ export default function DashboardShell({ lang, dictionary, children }: { lang: s
         <div className="p-3 flex-grow overflow-y-auto">
           <nav>
             <ul className="space-y-2">
+              {/*
               <li className="mb-1">
                 <Link href={`/${lang}/dashboard`} className={`gap-2 flex items-center p-3 rounded-md cursor-pointer ${pathname.endsWith("dashboard") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
                   <i className="fa-solid fa-gauge-high w-5 text-center"></i>
                   {sidebarOpen && <span>{dictionary.dashboard.dashboard}</span>}
                 </Link>
               </li>
+              */}
               <li className="mb-1">
                 <Link href={`/${lang}/dashboard/my-courses`} className={`gap-2 flex items-center p-3 rounded-md cursor-pointer ${pathname.includes("my-courses") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
                   <i className="fa-solid fa-book-open w-5 text-center"></i>

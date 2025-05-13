@@ -22,7 +22,7 @@ export default function SignInForm({ dictionary, lang }: { dictionary: any; lang
       localStorage.setItem("strapi_jwt", data.jwt)
       localStorage.setItem("strapi_user", JSON.stringify(data.user))
       // Redirect to home or previous page
-      const redirect = searchParams.get("redirect") || `/${lang}/dashboard`
+      const redirect = searchParams.get("redirect") || `/${lang}/dashboard/my-courses`
       router.push(redirect)
     } catch (err: any) {
       setError(err.message)
