@@ -3,6 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import type { Locale } from "@/lib/i18n-config"
+import Link from "next/link"
 
 export default function Footer({
   lang,
@@ -21,13 +22,12 @@ export default function Footer({
   return (
     <footer id="footer" className="bg-[#ECEFCA] py-12">
       <div className="container mx-auto px-5">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="flex items-center mb-6">
-              <div className="w-10 h-10 bg-[#213448] flex items-center justify-center rounded-md">
-                <span className="text-white text-xl font-bold">OA</span>
-              </div>
-              <div className="ml-2 text-xl font-bold text-[#213448]">Online Academy</div>
+              <Link href="/">
+                <img src="/logo.png" alt="Logo" className="h-12 w-auto" />
+              </Link>
             </div>
             <p className="text-gray-600 mb-6">{dictionary.footer.about}</p>
             <div className="flex space-x-4">
@@ -49,20 +49,8 @@ export default function Footer({
             <h3 className="text-xl font-bold text-[#213448] mb-6">{dictionary.footer.explore}</h3>
             <ul className="space-y-3">
               <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.home}</span></li>
-              <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.courses}</span></li>
               <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.about}</span></li>
               <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.contact}</span></li>
-              <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.footer.blog}</span></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-[#213448] mb-6">{dictionary.footer.categories}</h3>
-            <ul className="space-y-3">
-              <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.footer.programming}</span></li>
-              <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.footer.dataScience}</span></li>
-              <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.footer.business}</span></li>
-              <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.footer.design}</span></li>
-              <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.footer.marketing}</span></li>
             </ul>
           </div>
           <div>

@@ -66,13 +66,13 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               <nav>
                 <ul className="space-y-2">
                   <li className="mb-1">
-                    <Link href={`./`} className={`flex items-center p-2 rounded-md cursor-pointer ${pathname.endsWith("dashboard") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
+                    <Link href={`/${lang}/dashboard`} className={`flex items-center p-2 rounded-md cursor-pointer ${pathname.endsWith("dashboard") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
                       <i className="fa-solid fa-gauge-high w-5 text-center mr-3"></i>
                       {sidebarOpen && <span>Dashboard</span>}
                     </Link>
                   </li>
                   <li className="mb-1">
-                    <Link href={`./dashboard/my-courses`} className={`flex items-center p-3 rounded-md cursor-pointer ${pathname.includes("my-courses") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
+                    <Link href={`/${lang}/dashboard/my-courses`} className={`flex items-center p-3 rounded-md cursor-pointer ${pathname.includes("my-courses") ? "bg-[#547792] text-white" : "hover:bg-[#2e4a67] transition-colors"} ${!sidebarOpen ? "justify-center" : ""}`}>
                       <i className="fa-solid fa-book-open w-5 text-center mr-3"></i>
                       {sidebarOpen && <span>My Courses</span>}
                     </Link>

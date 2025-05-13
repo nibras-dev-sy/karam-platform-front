@@ -7,7 +7,7 @@ export default async function SignUp({ params }: { params: { lang: Locale } }) {
   const dictionary = await getDictionary(lang)
 
   return (
-    <div className="flex min-h-screen bg-[#ECEFCA]">
+    <div className="flex min-h-screen bg-[#b9bc9e]">
       {/* Left Side - Logo and Image */}
       <div className="hidden lg:flex w-1/2 bg-[#213448] flex-col items-center justify-center p-10">
         <div className="relative w-full max-w-md">
