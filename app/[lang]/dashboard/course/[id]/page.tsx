@@ -94,11 +94,7 @@ export default function CoursePage() {
                   </div>
                 </div>
                 <button className="text-[#213448] hover:text-[#547792]">
-                  {lecture.progress ? (
-                    <i className="fa-solid fa-play"></i>
-                  ) : (
-                    <i className="fa-solid fa-lock"></i>
-                  )}
+                  <i className="fa-solid fa-play"></i>
                 </button>
               </div>
             ))}

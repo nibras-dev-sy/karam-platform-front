@@ -87,4 +87,20 @@ export async function getLectureByDocumentIdStrapi(documentId: string, jwt: stri
   }
   const data = await res.json()
   return data.data
+}
+
+export async function markLectureProgressStrapi(lectureDocumentId: string, jwt: string) {
+  const res = await fetch(`${STRAPI_URL}/api/progresses`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({data: { lectureDocumentId }}),
+  })
+  const data = await res.json()
+  if (!res.ok) {
+    throw new Error(data?.error?.message || data?.message || "Failed to mark progress")
+  }
+  return data
 } 
