@@ -62,7 +62,7 @@ export default function LectureClient({ dictionary }: { dictionary: any }) {
         className="mb-6 px-4 py-2 bg-[#547792] text-white rounded hover:bg-[#213448] transition-colors"
         onClick={() => router.push(`/${lang}/dashboard/course/${courseId}`)}
       >
-        <i className="fa fa-arrow-left mr-2"></i> {dictionary.dashboard.backToMyCourses || "Back to My Courses"}
+        <i className="fa fa-arrow-left"></i>
       </button>
       <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
         <h1 className="text-2xl font-bold text-[#213448] mb-2">{lecture.title}</h1>
