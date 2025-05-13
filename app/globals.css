@@ -131,3 +131,10 @@
     text-align: right;
   }
 }
+
+.font-arabic {
+  font-family: 'Cairo', 'Noto Sans Arabic', Arial, sans-serif;
+}
+.font-sans {
+  font-family: var(--font-inter), Arial, sans-serif;
+}

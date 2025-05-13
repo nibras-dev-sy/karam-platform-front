@@ -13,6 +13,7 @@ export default function Header({
   dictionary: any
 }) {
   const [user, setUser] = useState<any>(null)
+  const isRtl = lang === "ar"
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -37,18 +38,18 @@ export default function Header({
 
   return (
     <header id="header" className="bg-white shadow-sm py-4 sticky top-0 z-50">
-      <div className="container mx-auto px-5 flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+      <div className={`container mx-auto px-5 flex items-center justify-between ${isRtl ? 'flex-row-reverse' : ''}`}>
+        <div className={`flex items-center ${isRtl ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
           <Link href="/">
             <img src="/logo.png" alt="Logo" className="h-12 w-auto" />
           </Link>
         </div>
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className={`hidden md:flex items-center ${isRtl ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
           <Link href={`/${lang}/p`} className="text-[#213448] font-medium border-b-2 border-[#547792] cursor-pointer">{dictionary.navbar.home}</Link>
           <Link href={`/${lang}/p/about`} className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.about}</Link>
           <span className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.contact}</span>
         </nav>
-        <div className="flex items-center space-x-5">
+        <div className={`flex items-center ${isRtl ? 'space-x-reverse space-x-5' : 'space-x-5'}`}>
           {user ? (
             <>
               <Link href={`/${lang}/dashboard/my-courses`}
