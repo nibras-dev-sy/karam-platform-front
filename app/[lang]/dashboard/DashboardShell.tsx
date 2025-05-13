@@ -33,11 +33,11 @@ export default function DashboardShell({ lang, dictionary, children }: { lang: s
   }
 
   return (
-    <div className="flex h-[100vh]">
+    <div className="flex h-[100vh]" dir={lang === "ar" ? "rtl" : "ltr"}>
       {/* Sidebar Navigation */}
       <div
         id="sidebar"
-        className={`transition-all duration-300 ${sidebarOpen ? "w-64" : "w-16"} bg-[#213448] text-white h-full flex flex-col fixed`}
+        className={`transition-all duration-300 ${sidebarOpen ? "w-64" : "w-16"} bg-[#213448] text-white h-full flex flex-col fixed z-20 ${lang === "ar" ? "right-0" : "left-0"}`}
         onClick={() => {
           if (!sidebarOpen) setSidebarOpen(true)
         }}
@@ -86,7 +86,7 @@ export default function DashboardShell({ lang, dictionary, children }: { lang: s
       {/* Main Content */}
       <div
         id="main-content"
-        className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-16"} flex-1 bg-[#f7f5ed] overflow-y-auto flex flex-col min-h-screen`}
+        className={`transition-all duration-300 flex-1 bg-[#f7f5ed] overflow-y-auto flex flex-col min-h-screen ${sidebarOpen ? (lang === "ar" ? "mr-64" : "ml-64") : (lang === "ar" ? "mr-16" : "ml-16")}`}
         onClick={() => {
           if (sidebarOpen) setSidebarOpen(false)
         }}
