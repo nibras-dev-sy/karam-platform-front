@@ -17,7 +17,7 @@ export default function CoursePage() {
       try {
         const jwt = localStorage.getItem("strapi_jwt")
         if (!jwt) throw new Error("Not authenticated")
-        const data = await getLecturesByCourseStrapi(Number(id), jwt)
+        const data = await getLecturesByCourseStrapi(id, jwt)
         setLectures(data)
       } catch (err: any) {
         setError(err.message || "Failed to load lectures")
@@ -73,8 +73,8 @@ export default function CoursePage() {
           <div className="p-4 space-y-3">
             {lectures.map((lecture, idx) => (
               <div
-                key={lecture.id}
-                id={`lecture-${lecture.id}`}
+                key={lecture.documentId}
+                id={`lecture-${lecture.documentId}`}
                 className={`flex items-center justify-between p-3 ${lecture.progress ? "bg-[#ECEFCA]" : "hover:bg-gray-50"} rounded-lg`}
               >
                 <div className="flex items-center">

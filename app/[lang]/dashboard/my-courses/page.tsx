@@ -74,10 +74,10 @@ export default function MyCoursesPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {courses.map((course: any) => (
           <div
-            key={course.id}
-            id={`course-card-${course.id}`}
+            key={course.documentId}
+            id={`course-card-${course.documentId}`}
             className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
-            onClick={() => router.push(`/${lang}/dashboard/course/${course.id}`)}
+            onClick={() => router.push(`/${lang}/dashboard/course/${course.documentId}`)}
           >
             <img
               className="w-full h-48 object-cover"
@@ -151,7 +151,7 @@ export default function MyCoursesPage() {
             <h2 className="text-xl font-bold mb-4 text-[#213448]">Activation Successful</h2>
             <div className="space-y-4">
               {addedCourses.map((course: any) => (
-                <div key={course.id} className="bg-[#ECEFCA] rounded-lg p-4">
+                <div key={course.documentId} className="bg-[#ECEFCA] rounded-lg p-4">
                   <h3 className="text-lg font-bold text-[#213448] mb-1">{course.title}</h3>
                   <p className="text-[#547792] text-sm mb-1">{course.description || "No description available."}</p>
                   <span className="text-xs text-gray-500">Course ID: {course.documentId}</span>

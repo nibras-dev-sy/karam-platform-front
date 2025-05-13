@@ -59,8 +59,8 @@ export async function activateCourseCodeStrapi(code: string, jwt: string) {
   return data
 }
 
-export async function getLecturesByCourseStrapi(courseId: number, jwt: string) {
-  const url = `${STRAPI_URL}/api/lectures?filters[course][id][$eq]=${courseId}&populate=progress`
+export async function getLecturesByCourseStrapi(courseId: string, jwt: string) {
+  const url = `${STRAPI_URL}/api/lectures?course=${courseId}`
   const res = await fetch(url, {
     headers: {
       "Authorization": `Bearer ${jwt}`,
