@@ -57,4 +57,19 @@ export async function activateCourseCodeStrapi(code: string, jwt: string) {
     throw new Error(data?.error?.message || data?.message || "Activation failed")
   }
   return data
+}
+
+export async function getLecturesByCourseStrapi(courseId: number, jwt: string) {
+  const url = `${STRAPI_URL}/api/lectures?filters[course][id][$eq]=${courseId}&populate=progress`
+  const res = await fetch(url, {
+    headers: {
+      "Authorization": `Bearer ${jwt}`,
+    },
+    cache: "no-store",
+  })
+  if (!res.ok) {
+    throw new Error("Failed to fetch lectures")
+  }
+  const data = await res.json()
+  return data.data
 } 

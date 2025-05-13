@@ -12,10 +12,11 @@
     "dashboard": "Dashboard"
   },
   "hero": {
-    "title": "Unlock Your Potential with Online Learning",
+    "title": "Unlock Your Potential with Karam",
     "subtitle": "Discover thousands of courses taught by industry experts and enhance your skills from anywhere, anytime.",
     "explore": "Explore Courses",
-    "learnMore": "Learn More"
+    "learnMore": "Learn More",
+    "start": "Start Learning"
   },
   "stats": {
     "title": "Our Impact in Numbers",

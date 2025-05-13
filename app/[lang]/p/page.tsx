@@ -1,5 +1,6 @@
 import { getDictionary } from "@/lib/dictionary"
 import type { Locale } from "@/lib/i18n-config"
+import Link from "next/link"
 
 export default async function Home({
   params,
@@ -21,19 +22,16 @@ export default async function Home({
               </h1>
               <p className="text-lg text-gray-700 mb-8">{dictionary.hero.subtitle}</p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <span className="bg-[#213448] text-white px-8 py-3 rounded-md font-medium hover:bg-[#547792] transition-colors text-center cursor-pointer">
-                  {dictionary.hero.explore}
-                </span>
-                <span className="border border-[#213448] text-[#213448] px-8 py-3 rounded-md font-medium hover:bg-[#213448] hover:text-white transition-colors text-center cursor-pointer">
-                  {dictionary.hero.learnMore}
-                </span>
+                <Link href={`/${lang}/p/sign-in`} className="bg-[#213448] text-white px-8 py-3 rounded-md font-medium hover:bg-[#547792] transition-colors text-center cursor-pointer">
+                  {dictionary.hero.start}
+                </Link>
               </div>
             </div>
             <div className="md:w-1/2">
               <div className="relative">
                 <img
-                  className="rounded-lg shadow-xl"
-                  src="https://storage.googleapis.com/uxpilot-auth.appspot.com/77233029e7-67c3542adb07ec65fe31.png"
+                  className="rounded-lg"
+                  src="/hero_image.png"
                   alt="modern e-learning platform with students studying on laptops, professional lighting, educational environment, clean design"
                 />
               </div>
@@ -88,12 +86,9 @@ export default async function Home({
           <h2 className="text-3xl md:text-4xl font-bold mb-6">{dictionary.cta.title}</h2>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">{dictionary.cta.subtitle}</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <span className="bg-[#547792] text-white px-8 py-3 rounded-md font-medium hover:bg-[#94B4C1] transition-colors cursor-pointer">
+            <Link href={`/${lang}/p/sign-up`} className="bg-[#547792] text-white px-8 py-3 rounded-md font-medium hover:bg-[#94B4C1] transition-colors cursor-pointer">
               {dictionary.cta.getStarted}
-            </span>
-            <span className="border border-white text-white px-8 py-3 rounded-md font-medium hover:bg-white hover:text-[#213448] transition-colors cursor-pointer">
-              {dictionary.cta.browse}
-            </span>
+            </Link>
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { getCoursesStrapi, activateCourseCodeStrapi } from "@/lib/strapi"
+import { useRouter, usePathname } from "next/navigation"
 
 const PLACEHOLDER_IMAGE = "https://storage.googleapis.com/uxpilot-auth.appspot.com/1cac03a7d8-ddaff9f4f1360e2a0802.png"
 const PLACEHOLDER_AVATAR = "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg"
@@ -16,6 +17,9 @@ export default function MyCoursesPage() {
   const [activationError, setActivationError] = useState("")
   const [showSuccessPopup, setShowSuccessPopup] = useState(false)
   const [addedCourses, setAddedCourses] = useState<any[]>([])
+  const router = useRouter()
+  const pathname = usePathname()
+  const lang = pathname.split("/")[1] || "en"
 
   async function fetchCourses() {
     setLoading(true)
@@ -76,7 +80,12 @@ export default function MyCoursesPage() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {courses.map((course: any) => (
-          <div key={course.id} id={`course-card-${course.id}`} className="bg-white rounded-lg shadow-sm overflow-hidden">
+          <div
+            key={course.id}
+            id={`course-card-${course.id}`}
+            className="bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
+            onClick={() => router.push(`/${lang}/dashboard/course/${course.id}`)}
+          >
             <img
               className="w-full h-48 object-cover"
               src={course.image || PLACEHOLDER_IMAGE}
