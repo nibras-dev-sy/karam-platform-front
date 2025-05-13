@@ -4,9 +4,6 @@ import { useEffect, useState } from "react"
 import { getCoursesStrapi, activateCourseCodeStrapi } from "@/lib/strapi"
 import { useRouter, usePathname } from "next/navigation"
 
-const PLACEHOLDER_IMAGE = "https://storage.googleapis.com/uxpilot-auth.appspot.com/1cac03a7d8-ddaff9f4f1360e2a0802.png"
-const PLACEHOLDER_AVATAR = "https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg"
-
 export default function MyCoursesPage() {
   const [courses, setCourses] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -70,12 +67,8 @@ export default function MyCoursesPage() {
   return (
     <>
       <div className="flex justify-end mb-8">
-        <button
-          className="bg-[#213448] hover:bg-[#547792] text-white font-medium py-2 px-6 rounded-lg transition duration-200"
-          onClick={() => setShowPopup(true)}
-        >
-          <i className="fa fa-plus" aria-hidden="true"> </i>
-          Add Course
+        <button className="bg-[#213448] hover:bg-[#547792] text-white font-medium py-2 px-6 rounded-lg transition duration-200" onClick={() => setShowPopup(true)}>
+          <i className="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -88,7 +81,7 @@ export default function MyCoursesPage() {
           >
             <img
               className="w-full h-48 object-cover"
-              src={course.image || PLACEHOLDER_IMAGE}
+              src={course.image || "/placeholder.jpg"}
               alt="Course thumbnail"
             />
             <div className="p-6">
@@ -97,12 +90,12 @@ export default function MyCoursesPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <img
-                    src={course.users?.[0]?.avatar || PLACEHOLDER_AVATAR}
+                    src={course.techer?.image || "/placeholder_image.png"}
                     alt="Instructor"
                     className="w-8 h-8 rounded-full"
                   />
                   <span className="ml-2 text-sm text-[#547792]">
-                    {course.users?.[0]?.username || "Unknown Instructor"}
+                    {course.teacher?.name || "Unknown Instructor"}
                   </span>
                 </div>
               </div>

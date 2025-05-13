@@ -101,7 +101,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           {/* Main Content */}
           <div
             id="main-content"
-            className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-16"} flex-1 bg-[#ECEFCA] overflow-y-auto`}
+            className={`transition-all duration-300 ${sidebarOpen ? "ml-64" : "ml-16"} flex-1 bg-[#f7f5ed] overflow-y-auto`}
             onClick={() => {
               if (sidebarOpen) setSidebarOpen(false)
             }}
