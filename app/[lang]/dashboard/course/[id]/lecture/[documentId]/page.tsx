@@ -1,16 +1,20 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useParams } from "next/navigation"
+import { useParams, usePathname, useRouter } from "next/navigation"
 import { getLectureByDocumentIdStrapi, markLectureProgressStrapi } from "@/lib/strapi"
 
 export default function LecturePage() {
   const { documentId } = useParams() as { documentId: string }
   const [lecture, setLecture] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+  const router = useRouter()
   const [error, setError] = useState("")
   const [progressChecked, setProgressChecked] = useState(false)
   const [progressLoading, setProgressLoading] = useState(false)
+    const pathname = usePathname()
+    const lang = pathname.split("/")[1] || "en"
+    const courseId = pathname.split("/")[4]
 
   useEffect(() => {
     async function fetchLecture() {
@@ -53,7 +57,13 @@ export default function LecturePage() {
   const videoUrl = lecture.video?.url ? (lecture.video.url.startsWith("http") ? lecture.video.url : `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${lecture.video.url}`) : null
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-6 py-2">
+            <button
+        className="mb-6 px-4 py-2 bg-[#547792] text-white rounded hover:bg-[#213448] transition-colors"
+        onClick={() => router.push(`/${lang}/dashboard/course/${courseId}`)}
+      >
+        <i className="fa fa-arrow-left mr-2"></i> Back to My Courses
+      </button>
       <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
         <h1 className="text-2xl font-bold text-[#213448] mb-2">{lecture.title}</h1>
         <p className="text-[#547792] mb-4">{lecture.description}</p>

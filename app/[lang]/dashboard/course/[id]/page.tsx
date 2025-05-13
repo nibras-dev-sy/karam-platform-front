@@ -43,7 +43,13 @@ export default function CoursePage() {
   if (error) return <div className="text-center text-red-600 py-10">{error}</div>
 
   return (
-    <div id="course-content" className="p-6">
+    <div id="course-content" className="p-6 py-2">
+      <button
+        className="mb-6 px-4 py-2 bg-[#547792] text-white rounded hover:bg-[#213448] transition-colors"
+        onClick={() => router.push(`/${lang}/dashboard/my-courses`)}
+      >
+        <i className="fa fa-arrow-left mr-2"></i> Back to My Courses
+      </button>
       {/* Course Header */}
       <div id="course-header" className="bg-white rounded-lg p-6 mb-6 shadow-sm">
         <div className="flex items-center justify-between mb-4">

@@ -86,10 +86,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 <h3 className="text-sm uppercase text-gray-400 mb-4 font-medium">Account</h3>
                 <ul className="space-y-2">
                   <li className="mb-1">
-                    <span className="gap-2 flex items-center p-3 rounded-md hover:bg-[#2e4a67] transition-colors cursor-pointer">
+                    <Link href={`/${lang}/dashboard/profile`} className="gap-2 flex items-center p-3 rounded-md hover:bg-[#2e4a67] transition-colors cursor-pointer">
                       <i className="fa-solid fa-user w-5 text-center"></i>
                       <span>Profile</span>
-                    </span>
+                    </Link>
                   </li>
                 </ul>
               </div>
