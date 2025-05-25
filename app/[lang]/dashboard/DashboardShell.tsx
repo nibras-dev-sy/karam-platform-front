@@ -41,8 +41,9 @@ export default function DashboardShell({ lang, dictionary, children }: { lang: s
         className={`hidden md:flex transition-all duration-300 w-64 bg-[#213448] text-white h-full flex-col fixed z-20 ${lang === "ar" ? "right-0" : "left-0"}`}
       >
         <div className={`p-5 border-b border-[#2e4a67] flex items-center justify-start`}>
-          <Link href="/">
+          <Link href="/" className="flex items-center gap-3">
             <img src="/logo.png" alt="Logo" className="h-12 w-auto filter invert brightness-0" />
+            <span className="text-xl font-semibold text-white">{dictionary.navbar.title}</span>
           </Link>
         </div>
         <div className="p-3 flex-grow overflow-y-auto">

@@ -42,8 +42,9 @@ export default function Header({
     <header id="header" className="bg-white shadow-sm py-4 sticky top-0 z-50">
       <div className={`container mx-auto px-5 flex items-center justify-between ${isRtl ? 'flex-row-reverse' : ''}`}>
         <div className={`flex items-center ${isRtl ? 'space-x-reverse space-x-4' : 'space-x-4'}`}>
-          <Link href="/">
+          <Link href="/" className="flex items-center space-x-3">
             <img src="/logo.png" alt="Logo" className="h-12 w-auto" />
+            <span className="text-xl font-semibold text-[#213448]">{dictionary.navbar.title}</span>
           </Link>
         </div>
         <nav className={`hidden md:flex items-center ${isRtl ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
