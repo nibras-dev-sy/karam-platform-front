@@ -1,8 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useParams, usePathname, useRouter } from "next/navigation"
 import { getLectureByDocumentIdStrapi, markLectureProgressStrapi } from "@/lib/strapi"
+import Hls from "hls.js"
 
 export default function LectureClient({ dictionary }: { dictionary: any }) {
   const { documentId } = useParams() as { documentId: string }
@@ -15,6 +16,8 @@ export default function LectureClient({ dictionary }: { dictionary: any }) {
   const pathname = usePathname()
   const lang = pathname.split("/")[1] || "en"
   const courseId = pathname.split("/")[4]
+
+  const videoRef = useRef<HTMLVideoElement | null>(null)
 
   useEffect(() => {
     async function fetchLecture() {
@@ -35,6 +38,20 @@ export default function LectureClient({ dictionary }: { dictionary: any }) {
     if (documentId) fetchLecture()
   }, [documentId])
 
+  useEffect(() => {
+    if (!videoRef.current) return
+    if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+      videoRef.current.src = lecture?.videoUrl
+    } else if (Hls.isSupported()) {
+      const hls = new Hls()
+      hls.loadSource(lecture?.videoUrl)
+      hls.attachMedia(videoRef.current)
+      return () => {
+        hls.destroy()
+      }
+    }
+  }, [lecture?.videoUrl])
+
   async function handleProgressChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (progressChecked) return
     setProgressLoading(true)
@@ -54,7 +71,7 @@ export default function LectureClient({ dictionary }: { dictionary: any }) {
   if (error) return <div className="text-center text-red-600 py-10">{error}</div>
   if (!lecture) return null
 
-  const videoUrl = lecture.video?.url ? (lecture.video.url.startsWith("http") ? lecture.video.url : `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${lecture.video.url}`) : null
+  const videoUrl = lecture?.videoUrl
 
   return (
     <div className="mx-auto p-6 py-2">
@@ -69,9 +86,13 @@ export default function LectureClient({ dictionary }: { dictionary: any }) {
         <p className="text-[#547792] mb-4">{lecture.description}</p>
         {videoUrl && (
           <div className="my-6">
-            <video controls className="w-full h-[480px] max-h-[70vh] rounded-lg shadow object-contain bg-black">
-              <source src={videoUrl} type="video/mp4" />
-              {dictionary.dashboard.noVideoSupport || "Your browser does not support the video tag."}
+            <video
+              ref={videoRef}
+              controls
+              controlsList="nodownload"
+              className="w-full h-[480px] max-h-[70vh] rounded-lg shadow object-contain bg-black"
+              onContextMenu={e => e.preventDefault()}
+            >
             </video>
           </div>
         )}
