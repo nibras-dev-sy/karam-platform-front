@@ -90,7 +90,7 @@ export default function LectureClient({ dictionary }: { dictionary: any }) {
               ref={videoRef}
               controls
               controlsList="nodownload"
-              className="w-full h-[480px] max-h-[70vh] rounded-lg shadow object-contain bg-black"
+              className="w-full rounded-lg shadow object-contain bg-black"
               onContextMenu={e => e.preventDefault()}
             >
             </video>
