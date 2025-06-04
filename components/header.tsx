@@ -50,7 +50,7 @@ export default function Header({
         <nav className={`hidden md:flex items-center ${isRtl ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
           <Link href={`/${lang}/p`} className="text-[#213448] font-medium border-b-2 border-[#547792] cursor-pointer">{dictionary.navbar.home}</Link>
           <Link href={`/${lang}/p/about`} className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.about}</Link>
-          <span className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.contact}</span>
+          <Link href={`/${lang}/p/join-us`} className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.joinUs || "Join Us"}</Link>
         </nav>
         <div className={`hidden md:flex items-center ${isRtl ? 'space-x-reverse space-x-5' : 'space-x-5'}`}>
           {user ? (
@@ -109,7 +109,7 @@ export default function Header({
               <nav className={`flex flex-col gap-4 w-full ${isRtl ? 'items-end' : 'items-start'}`}> 
                 <Link href={`/${lang}/p`} className="text-[#213448] font-medium border-b-2 border-[#547792] cursor-pointer w-full" onClick={() => setMobileMenuOpen(false)}>{dictionary.navbar.home}</Link>
                 <Link href={`/${lang}/p/about`} className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer w-full" onClick={() => setMobileMenuOpen(false)}>{dictionary.navbar.about}</Link>
-                <span className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer w-full">{dictionary.navbar.contact}</span>
+                <Link href={`/${lang}/p/join-us`} className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer w-full" onClick={() => setMobileMenuOpen(false)}>{dictionary.navbar.joinUs || "Join Us"}</Link>
               </nav>
               <div className={`flex flex-col gap-4 mt-8 w-full ${isRtl ? 'items-end' : 'items-start'}`}> 
                 {user ? (

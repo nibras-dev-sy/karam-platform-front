@@ -13,7 +13,8 @@
     "languageSwitcher": "العربية",
     "logout": "Logout",
     "dashboard": "Dashboard",
-    "title": "AlKaram Education Platform"
+    "title": "AlKaram Education Platform",
+    "joinUs": "Join Us"
   },
   "hero": {
     "title": "Unlock Your Potential with Karam",
@@ -51,7 +52,8 @@
     "dataScience": "Data Science",
     "business": "Business",
     "design": "Design",
-    "marketing": "Marketing"
+    "marketing": "Marketing",
+    "contactUsOn": "Contact Us on"
   },
   "auth": {
     "unlock": "Unlock Your Potential",
@@ -116,5 +118,11 @@
     "saving": "Saving...",
     "success": "Profile updated successfully.",
     "error": "Failed to update profile"
+  },
+  "joinUs": {
+    "title": "Join Us",
+    "sales": "Sales",
+    "support": "Support",
+    "call": "Call us"
   }
 }

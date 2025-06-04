@@ -50,26 +50,12 @@ export default function Footer({
             <ul className="space-y-3">
               <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.home}</span></li>
               <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.about}</span></li>
-              <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.contact}</span></li>
+              <li><span className="text-gray-600 hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.joinUs}</span></li>
             </ul>
           </div>
           <div>
             <h3 className="text-xl font-bold text-[#213448] mb-6">{dictionary.footer.subscribe}</h3>
-            <p className="text-gray-600 mb-4">{dictionary.footer.subscribeDesc}</p>
-            <form onSubmit={handleSubmit}>
-              <div className="flex mb-4">
-                <input
-                  type="email"
-                  placeholder={dictionary.footer.emailPlaceholder}
-                  className="flex-grow px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none focus:border-[#547792]"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                />
-                <button type="submit" className="bg-[#213448] text-white px-4 py-2 rounded-r-md hover:bg-[#547792] transition-colors">
-                  <i className="fa-solid fa-paper-plane"></i>
-                </button>
-              </div>
-            </form>
+            <div>{dictionary.footer.contactUsOn} {"+963996785533"}</div>
             <p className="text-gray-600 text-sm">{dictionary.footer.terms}</p>
           </div>
         </div>
