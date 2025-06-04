@@ -1,4 +1,7 @@
 {
+  "sidebar": {
+    "title": "Al Karam"
+  },
   "navbar": {
     "home": "Home",
     "courses": "Courses",

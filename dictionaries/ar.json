@@ -1,4 +1,7 @@
 {
+  "sidebar": {
+    "title": "الكرم"
+  },
   "navbar": {
     "home": "الرئيسية",
     "courses": "الدورات",

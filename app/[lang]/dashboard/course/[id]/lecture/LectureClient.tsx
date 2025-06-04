@@ -38,19 +38,32 @@ export default function LectureClient({ dictionary }: { dictionary: any }) {
     if (documentId) fetchLecture()
   }, [documentId])
 
+  // Use lecture.videoUrl if present, otherwise use lecture.video.url if it is an mp4
+  const videoUrl = lecture?.videoUrl || (lecture?.video?.url && lecture.video.url.endsWith('.mp4') ? lecture.video.url : null)
+
   useEffect(() => {
-    if (!videoRef.current) return
+    if (!videoRef.current || !videoUrl) return
+    // If the videoUrl is an mp4, set src directly and do not use HLS.js
+    if (videoUrl.endsWith('.mp4')) {
+      videoRef.current.src = videoUrl
+      return
+    }
+    // Otherwise, check for HLS support
     if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
-      videoRef.current.src = lecture?.videoUrl
+      videoRef.current.src = videoUrl
     } else if (Hls.isSupported()) {
       const hls = new Hls()
-      hls.loadSource(lecture?.videoUrl)
+      hls.loadSource(videoUrl)
       hls.attachMedia(videoRef.current)
       return () => {
         hls.destroy()
       }
     }
-  }, [lecture?.videoUrl])
+  }, [videoUrl])
+
+  if (loading) return <div className="text-center py-10">{dictionary.dashboard.loading || "Loading..."}</div>
+  if (error) return <div className="text-center text-red-600 py-10">{error}</div>
+  if (!lecture) return null
 
   async function handleProgressChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (progressChecked) return
@@ -66,12 +79,6 @@ export default function LectureClient({ dictionary }: { dictionary: any }) {
       setProgressLoading(false)
     }
   }
-
-  if (loading) return <div className="text-center py-10">{dictionary.dashboard.loading || "Loading..."}</div>
-  if (error) return <div className="text-center text-red-600 py-10">{error}</div>
-  if (!lecture) return null
-
-  const videoUrl = lecture?.videoUrl
 
   return (
     <div className="mx-auto p-6 py-2">
