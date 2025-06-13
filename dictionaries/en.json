@@ -14,7 +14,8 @@
     "logout": "Logout",
     "dashboard": "Dashboard",
     "title": "AlKaram Education Platform",
-    "joinUs": "Join Us"
+    "joinUs": "Buy Subscription Online",
+    "support": "Support"
   },
   "hero": {
     "title": "Unlock Your Potential with Karam",
@@ -120,8 +121,13 @@
     "error": "Failed to update profile"
   },
   "joinUs": {
-    "title": "Join Us",
+    "title": "Buy Subscription Online",
     "sales": "Sales",
+    "support": "Support",
+    "call": "Call us"
+  },
+  "support": {
+    "title": "Support",
     "support": "Support",
     "call": "Call us"
   }
