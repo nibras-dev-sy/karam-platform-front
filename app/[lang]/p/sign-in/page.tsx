@@ -2,8 +2,12 @@ import { getDictionary } from "@/lib/dictionary"
 import type { Locale } from "@/lib/i18n-config"
 import SignInForm from "./SignInForm"
 
-export default async function SignIn({ params }: { params: { lang: Locale } }) {
-  const { lang } = params
+export default async function SignIn({
+  params,
+}: {
+    params: { lang: Locale }
+}) {
+  const { lang } = await params
   const dictionary = await getDictionary(lang)
 
   return (
