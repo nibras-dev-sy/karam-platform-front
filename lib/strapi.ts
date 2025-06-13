@@ -15,13 +15,13 @@ export async function signInStrapi({ identifier, password }: { identifier: strin
   return data; // contains jwt and user
 }
 
-export async function signUpStrapi({ username, email, password }: { username: string; email: string; password: string }) {
+export async function signUpStrapi({ username, email, password, education }: { username: string; email: string; password: string; education?: string }) {
   const res = await fetch(`${STRAPI_URL}/api/auth/local/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username, email, password }),
+    body: JSON.stringify({ username, email, password, education }),
   });
   const data = await res.json();
   if (!res.ok) {

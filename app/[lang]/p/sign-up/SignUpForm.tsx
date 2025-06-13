@@ -8,17 +8,26 @@ export default function SignUpForm({ dictionary, lang }: { dictionary: any; lang
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [educationMain, setEducationMain] = useState("") // 'ninth' or 'twelfth'
+  const [educationDetail, setEducationDetail] = useState("") // 'scientific' or 'literary'
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const router = useRouter()
   const searchParams = useSearchParams()
 
+  function getEducationValue() {
+    if (educationMain === "ninth") return "ninth"
+    if (educationMain === "twelfth" && educationDetail) return `twelfth_${educationDetail}`
+    return ""
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
     setError("")
+    const education = getEducationValue()
     try {
-      const data = await signUpStrapi({ username: name, email, password })
+      const data = await signUpStrapi({ username: name, email, password, education })
       localStorage.setItem("strapi_jwt", data.jwt)
       localStorage.setItem("strapi_user", JSON.stringify(data.user))
       const redirect = searchParams.get("redirect") || `/${lang}/p/sign-in`
@@ -97,6 +106,70 @@ export default function SignUpForm({ dictionary, lang }: { dictionary: any; lang
             <i className="fa-regular fa-eye text-gray-500"></i>
           </div>
         </div>
+      </div>
+      {/* Education Field as check buttons */}
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-[#213448] mb-2">
+          {dictionary.auth.education || "Education"}
+        </label>
+        <div className="flex gap-6 mb-2">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="education-main"
+              value="ninth"
+              checked={educationMain === "ninth"}
+              onChange={() => { setEducationMain("ninth"); setEducationDetail("") }}
+              disabled={loading}
+              className="form-radio h-4 w-4 text-[#547792] border-gray-300"
+              required
+            />
+            <span>{dictionary.auth.educationNinth || "Ninth Grade"}</span>
+          </label>
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="education-main"
+              value="twelfth"
+              checked={educationMain === "twelfth"}
+              onChange={() => setEducationMain("twelfth")}
+              disabled={loading}
+              className="form-radio h-4 w-4 text-[#547792] border-gray-300"
+              required
+            />
+            <span>{dictionary.auth.educationTwelfth || "Twelfth Grade"}</span>
+          </label>
+        </div>
+        {educationMain === "twelfth" && (
+          <div className="flex gap-6 mt-2">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="radio"
+                name="education-detail"
+                value="scientific"
+                checked={educationDetail === "scientific"}
+                onChange={() => setEducationDetail("scientific")}
+                disabled={loading}
+                className="form-radio h-4 w-4 text-[#547792] border-gray-300"
+                required
+              />
+              <span>{dictionary.auth.educationTwelfthScientific || "Scientific"}</span>
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="radio"
+                name="education-detail"
+                value="literary"
+                checked={educationDetail === "literary"}
+                onChange={() => setEducationDetail("literary")}
+                disabled={loading}
+                className="form-radio h-4 w-4 text-[#547792] border-gray-300"
+                required
+              />
+              <span>{dictionary.auth.educationTwelfthLiterary || "Literary"}</span>
+            </label>
+          </div>
+        )}
       </div>
       {/* Error Message */}
       {error && <div className="mb-4 text-red-600 text-sm">{error}</div>}
