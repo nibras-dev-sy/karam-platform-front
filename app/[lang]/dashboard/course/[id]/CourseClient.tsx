@@ -34,7 +34,6 @@ export default function CourseClient({ dictionary }: { dictionary: any }) {
 
   // Dummy course info for header (replace with real data if available)
   const courseTitle = lectures[0]?.course?.title || dictionary.dashboard.course || "Course"
-  const instructor = dictionary.dashboard.instructor || "Instructor"
   const totalLectures = lectures.length
   const completedLectures = lectures.filter(l => l.progress).length
   const totalHours = lectures[0]?.course?.totalHours || "20 hours total"
@@ -66,12 +65,6 @@ export default function CourseClient({ dictionary }: { dictionary: any }) {
               ></div>
             </div>
           </div>
-        </div>
-        <div className="flex items-center text-[#547792]">
-          <i className="fa-solid fa-user mr-2"></i>
-          <span className="mr-6">{dictionary.dashboard.instructor || "Instructor"}: {instructor}</span>
-          <i className="fa-solid fa-clock mr-2"></i>
-          <span>{totalHours}</span>
         </div>
       </div>
       {/* Lectures List */}

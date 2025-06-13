@@ -81,7 +81,7 @@ export default function MyCoursesClient({ dictionary }: { dictionary: any }) {
           >
             <img
               className="w-full h-48 object-cover"
-              src={course.image || "/placeholder.jpg"}
+              src={course.image?.url || "/placeholder.jpg"}
               alt={dictionary.dashboard.courseThumbnail || "Course thumbnail"}
             />
             <div className="p-6">

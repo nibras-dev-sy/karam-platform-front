@@ -153,7 +153,7 @@ export default function DashboardShell({ lang, dictionary, children }: { lang: s
         </header>
         <main className="p-4 md:p-8 flex-1">{children}</main>
         <footer className="w-full bg-gray-100 text-gray-500 text-xs text-center py-2 border-t border-gray-200 mt-auto">
-          © {new Date().getFullYear()} Al Karam Academy. All rights reserved.
+          © {new Date().getFullYear()} Al Karam Education Platform. All rights reserved.
         </footer>
       </div>
     </div>
