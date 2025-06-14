@@ -21,7 +21,7 @@ export async function signUpStrapi({ username, email, password, education }: { u
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username, email, password /*, education */ }),
+    body: JSON.stringify({ username, email, password , education }),
   });
   const data = await res.json();
   if (!res.ok) {
