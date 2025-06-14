@@ -1,12 +1,16 @@
+import { getDeviceId } from "./utils";
+
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"
 
 export async function signInStrapi({ identifier, password }: { identifier: string; password: string }) {
+  const deviceId = await getDeviceId();
+
   const res = await fetch(`${STRAPI_URL}/api/auth/local`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ identifier, password }),
+    body: JSON.stringify({ identifier, password, deviceId }),
   });
   const data = await res.json();
   if (!res.ok) {
@@ -15,13 +19,15 @@ export async function signInStrapi({ identifier, password }: { identifier: strin
   return data; // contains jwt and user
 }
 
-export async function signUpStrapi({ username, email, password, education }: { username: string; email: string; password: string; education?: string }) {
+export async function signUpStrapi({ username, mobile, password, education }: { username: string; mobile: string; password: string; education?: string }) {
+  const deviceId = await getDeviceId();
+  
   const res = await fetch(`${STRAPI_URL}/api/auth/local/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ username, email, password , education }),
+    body: JSON.stringify({ username, mobile, password , education, deviceId }),
   });
   const data = await res.json();
   if (!res.ok) {

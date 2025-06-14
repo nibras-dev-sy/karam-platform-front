@@ -6,7 +6,7 @@ import { signUpStrapi } from "@/lib/strapi"
 
 export default function SignUpForm({ dictionary, lang }: { dictionary: any; lang: string }) {
   const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
+  const [mobile, setMobile] = useState("")
   const [password, setPassword] = useState("")
   const [educationMain, setEducationMain] = useState("") // 'ninth' or 'twelfth'
   const [educationDetail, setEducationDetail] = useState("") // 'scientific' or 'literary'
@@ -27,7 +27,7 @@ export default function SignUpForm({ dictionary, lang }: { dictionary: any; lang
     setError("")
     const education = getEducationValue()
     try {
-      const data = await signUpStrapi({ username: name, email, password, education })
+      const data = await signUpStrapi({ username: name, mobile, password, education })
       localStorage.setItem("strapi_jwt", data.jwt)
       localStorage.setItem("strapi_user", JSON.stringify(data.user))
       const redirect = searchParams.get("redirect") || `/${lang}/p/sign-in`
@@ -64,21 +64,21 @@ export default function SignUpForm({ dictionary, lang }: { dictionary: any; lang
       </div>
       {/* Email Field */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-[#213448] mb-2" htmlFor="email">
-          {dictionary.auth.email}
+        <label className="block text-sm font-medium text-[#213448] mb-2" htmlFor="mobile">
+          {dictionary.auth.mobile}
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
             <i className="fa-regular fa-envelope text-gray-500"></i>
           </div>
           <input
-            id="email"
-            type="email"
+            id="mobile"
+            type="mobile"
             className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#547792] focus:border-[#547792]"
-            placeholder={dictionary.auth.emailPlaceholder}
+            placeholder={dictionary.auth.mobilePlaceholder}
             required
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            value={mobile}
+            onChange={e => setMobile(e.target.value)}
             disabled={loading}
           />
         </div>

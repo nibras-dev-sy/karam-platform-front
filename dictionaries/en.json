@@ -77,7 +77,14 @@
     "namePlaceholder": "Your full name",
     "signUp": "Sign Up",
     "haveAccount": "Already have an account?",
-    "signInHere": "Sign in here"
+    "signInHere": "Sign in here",
+    "mobile": "Mobile",
+    "mobilePlaceholder": "Your mobile number",
+    "education": "Education",
+    "educationNinth": "Ninth Grade",
+    "educationTwelfth": "Twelfth Grade",
+    "educationTwelfthScientific": "Scientific",
+    "educationTwelfthLiterary": "Literary"
   },
   "dashboard": {
     "dashboard": "Dashboard",

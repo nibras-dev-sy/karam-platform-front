@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { signInStrapi } from "@/lib/strapi"
 
 export default function SignInForm({ dictionary, lang }: { dictionary: any; lang: string }) {
-  const [email, setEmail] = useState("")
+  const [mobile, setMobile] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
@@ -17,7 +17,7 @@ export default function SignInForm({ dictionary, lang }: { dictionary: any; lang
     setLoading(true)
     setError("")
     try {
-      const data = await signInStrapi({ identifier: email, password })
+      const data = await signInStrapi({ identifier: mobile, password })
       // Store JWT in localStorage (or cookie for production)
       localStorage.setItem("strapi_jwt", data.jwt)
       localStorage.setItem("strapi_user", JSON.stringify(data.user))
@@ -35,21 +35,21 @@ export default function SignInForm({ dictionary, lang }: { dictionary: any; lang
     <form id="signin-form" onSubmit={handleSubmit}>
       {/* Email Field */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-[#213448] mb-2" htmlFor="email">
-          {dictionary.auth.email}
+        <label className="block text-sm font-medium text-[#213448] mb-2" htmlFor="mobile">
+          {dictionary.auth.mobile}
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
             <i className="fa-regular fa-envelope text-gray-500"></i>
           </div>
           <input
-            id="email"
-            type="email"
+            id="mobile"
+            type="mobile"
             className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#547792] focus:border-[#547792]"
-            placeholder={dictionary.auth.emailPlaceholder}
+            placeholder={dictionary.auth.mobilePlaceholder}
             required
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            value={mobile}
+            onChange={e => setMobile(e.target.value)}
             disabled={loading}
           />
         </div>

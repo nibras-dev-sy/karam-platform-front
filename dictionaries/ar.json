@@ -77,7 +77,14 @@
     "namePlaceholder": "اسمك الكامل",
     "signUp": "إنشاء حساب",
     "haveAccount": "لديك حساب بالفعل؟",
-    "signInHere": "سجّل الدخول من هنا"
+    "signInHere": "سجّل الدخول من هنا",
+    "mobile": "الهاتف",
+    "mobilePlaceholder": "رقم هاتفك",
+    "education": "التعليم",
+    "educationNinth": "تاسع",
+    "educationTwelfth": "باكالوريا",
+    "educationTwelfthScientific": "علمي",
+    "educationTwelfthLiterary": "أدبي"
   },
   "dashboard": {
     "dashboard": "لوحة التحكم",
