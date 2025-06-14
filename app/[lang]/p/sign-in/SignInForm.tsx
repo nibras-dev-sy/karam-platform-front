@@ -40,7 +40,7 @@ export default function SignInForm({ dictionary, lang }: { dictionary: any; lang
         </label>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-            <i className="fa-regular fa-envelope text-gray-500"></i>
+            <i className="fa fa-phone text-gray-500 p-2"></i>
           </div>
           <input
             id="mobile"
@@ -67,7 +67,7 @@ export default function SignInForm({ dictionary, lang }: { dictionary: any; lang
         </div>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-            <i className="fa-solid fa-lock text-gray-500"></i>
+            <i className="fa-solid fa-lock text-gray-500  p-2"></i>
           </div>
           <input
             id="password"

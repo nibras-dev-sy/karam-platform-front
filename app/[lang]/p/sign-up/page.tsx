@@ -40,7 +40,7 @@ export default async function SignUp({
           {/* Sign In Link */}
           <div className="mt-6 text-center text-gray-600">
             {dictionary.auth.haveAccount} {" "}
-            <a href={`/${lang}/sign-in`} className="text-[#547792] font-medium hover:text-[#213448] transition-colors cursor-pointer">
+            <a href={`/${lang}/p/sign-in`} className="text-[#547792] font-medium hover:text-[#213448] transition-colors cursor-pointer">
               {dictionary.auth.signInHere}
             </a>
           </div>
