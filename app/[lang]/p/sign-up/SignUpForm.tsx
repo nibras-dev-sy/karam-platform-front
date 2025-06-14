@@ -73,13 +73,13 @@ export default function SignUpForm({ dictionary, lang }: { dictionary: any; lang
           </div>
           <input
             id="mobile"
-            type="mobile"
             className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#547792] focus:border-[#547792]"
             placeholder={dictionary.auth.mobilePlaceholder}
             required
             value={mobile}
             onChange={e => setMobile(e.target.value)}
             disabled={loading}
+            pattern="^09\d{8}$"
           />
         </div>
       </div>

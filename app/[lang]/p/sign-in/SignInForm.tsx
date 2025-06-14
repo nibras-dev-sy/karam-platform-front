@@ -51,6 +51,7 @@ export default function SignInForm({ dictionary, lang }: { dictionary: any; lang
             value={mobile}
             onChange={e => setMobile(e.target.value)}
             disabled={loading}
+            pattern="^09\d{8}$"
           />
         </div>
       </div>
