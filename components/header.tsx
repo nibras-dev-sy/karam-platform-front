@@ -5,6 +5,7 @@ import LanguageSwitcher from "./language-switcher"
 import type { Locale } from "@/lib/i18n-config"
 import { useEffect, useState, Fragment } from "react"
 import { Dialog, Transition } from "@headlessui/react"
+import { usePathname } from "next/navigation"
 
 export default function Header({
   lang,
@@ -15,6 +16,7 @@ export default function Header({
 }) {
   const [user, setUser] = useState<any>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -47,9 +49,24 @@ export default function Header({
           </Link>
         </div>
         <nav className="hidden md:flex items-center gap-8 flex-1 justify-center">
-          <Link href={`/${lang}/p`} className="text-[#213448] font-medium border-b-2 border-[#547792] cursor-pointer">{dictionary.navbar.home}</Link>
-          <Link href={`/${lang}/p/support`} className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.support}</Link>
-          <Link href={`/${lang}/p/join-us`} className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer">{dictionary.navbar.joinUs}</Link>
+          <Link
+            href={`/${lang}/p`}
+            className={`text-[#213448] font-medium cursor-pointer ${pathname === `/${lang}/p` ? 'border-b-2 border-[#547792]' : 'hover:text-[#547792] transition-colors'}`}
+          >
+            {dictionary.navbar.home}
+          </Link>
+          <Link
+            href={`/${lang}/p/support`}
+            className={`text-[#213448] font-medium cursor-pointer ${pathname === `/${lang}/p/support` ? 'border-b-2 border-[#547792]' : 'hover:text-[#547792] transition-colors'}`}
+          >
+            {dictionary.navbar.support}
+          </Link>
+          <Link
+            href={`/${lang}/p/join-us`}
+            className={`text-[#213448] font-medium cursor-pointer ${pathname === `/${lang}/p/join-us` ? 'border-b-2 border-[#547792]' : 'hover:text-[#547792] transition-colors'}`}
+          >
+            {dictionary.navbar.joinUs}
+          </Link>
         </nav>
         <div className="hidden md:flex items-center gap-5 min-w-[220px] justify-end">
           {user ? (
@@ -106,9 +123,27 @@ export default function Header({
                 <i className="fa fa-times text-2xl text-[#213448]"></i>
               </button>
               <nav className="flex flex-col gap-4 w-full items-start"> 
-                <Link href={`/${lang}/p`} className="text-[#213448] font-medium border-b-2 border-[#547792] cursor-pointer w-full text-right" onClick={() => setMobileMenuOpen(false)}>{dictionary.navbar.home}</Link>
-                <Link href={`/${lang}/p/about`} className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer w-full text-right" onClick={() => setMobileMenuOpen(false)}>{dictionary.navbar.about}</Link>
-                <Link href={`/${lang}/p/join-us`} className="text-[#213448] font-medium hover:text-[#547792] transition-colors cursor-pointer w-full text-right" onClick={() => setMobileMenuOpen(false)}>{dictionary.navbar.joinUs || "Join Us"}</Link>
+                <Link
+                  href={`/${lang}/p`}
+                  className={`text-[#213448] font-medium cursor-pointer w-full text-right ${pathname === `/${lang}/p` ? 'border-b-2 border-[#547792]' : 'hover:text-[#547792] transition-colors'}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {dictionary.navbar.home}
+                </Link>
+                <Link
+                  href={`/${lang}/p/about`}
+                  className={`text-[#213448] font-medium cursor-pointer w-full text-right ${pathname === `/${lang}/p/about` ? 'border-b-2 border-[#547792]' : 'hover:text-[#547792] transition-colors'}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {dictionary.navbar.about}
+                </Link>
+                <Link
+                  href={`/${lang}/p/join-us`}
+                  className={`text-[#213448] font-medium cursor-pointer w-full text-right ${pathname === `/${lang}/p/join-us` ? 'border-b-2 border-[#547792]' : 'hover:text-[#547792] transition-colors'}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {dictionary.navbar.joinUs || "Join Us"}
+                </Link>
               </nav>
               <div className="flex flex-col gap-4 mt-8 w-full items-start"> 
                 {user ? (
