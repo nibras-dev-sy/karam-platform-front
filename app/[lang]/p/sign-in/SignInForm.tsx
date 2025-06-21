@@ -61,9 +61,6 @@ export default function SignInForm({ dictionary, lang }: { dictionary: any; lang
           <label className="block text-sm font-medium text-[#213448]" htmlFor="password">
             {dictionary.auth.password}
           </label>
-          <span className="text-sm text-[#547792] hover:text-[#213448] transition-colors cursor-pointer">
-            {dictionary.auth.forgotPassword}
-          </span>
         </div>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
@@ -83,11 +80,6 @@ export default function SignInForm({ dictionary, lang }: { dictionary: any; lang
             <i className="fa-regular fa-eye text-gray-500"></i>
           </div>
         </div>
-      </div>
-      {/* Remember Me */}
-      <div className="flex items-center mb-6">
-        <input type="checkbox" id="remember" className="w-4 h-4 text-[#547792] border-gray-300 rounded focus:ring-[#547792]" />
-        <label htmlFor="remember" className="ml-2 text-sm text-gray-600">{dictionary.auth.rememberMe}</label>
       </div>
       {/* Error Message */}
       {error && <div className="mb-4 text-red-600 text-sm">{error}</div>}
