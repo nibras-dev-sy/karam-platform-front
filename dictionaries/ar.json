@@ -115,7 +115,12 @@
     "lectures": "محاضرات",
     "instructor": "المدرب",
     "noVideoSupport": "متصفحك لا يدعم تشغيل الفيديو.",
-    "progressError": "فشل في حفظ التقدم."
+    "progressError": "فشل في حفظ التقدم.",
+    "examSection": "قسم الامتحان",
+    "examLink": "رابط الامتحان",
+    "examFile": "ملف الامتحان",
+    "downloadExam": "تحميل الامتحان",
+    "noExamAvailable": "لا يوجد امتحان متاح لهذه المحاضرة."
   },
   "profile": {
     "editProfile": "تعديل الملف الشخصي",

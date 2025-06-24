@@ -121,6 +121,45 @@ export default function LectureClient({ dictionary }: { dictionary: any }) {
           </label>
         </div>
       </div>
+      <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+                {/* Exam Section */}
+                {(lecture.examLink || lecture.examFile?.url) && (
+          <div>
+            <h2 className="text-xl font-semibold text-[#213448] mb-4">
+              {dictionary.dashboard.examSection || "Exam Section"}
+            </h2>
+            {lecture.examLink && (
+              <div className="mb-2">
+                <a
+                  href={lecture.examLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-4 py-2 bg-[#547792] text-white rounded hover:bg-[#213448] transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open(lecture.examLink, '_blank', 'noopener,noreferrer');
+                  }}
+                >
+                  <i className="fa fa-link mr-2"></i>
+                  {dictionary.dashboard.examLink || "Exam Link"}
+                </a>
+              </div>
+            )}
+            {lecture.examFile?.url && (
+              <div className="mb-2">
+                <a
+                  href={lecture.examFile.url}
+                  download
+                  className="inline-block px-4 py-2 bg-[#547792] text-white rounded hover:bg-[#213448] transition-colors"
+                >
+                  <i className="fa fa-download mr-2"></i>
+                  {dictionary.dashboard.downloadExam || "Download Exam"}
+                </a>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   )
 } 

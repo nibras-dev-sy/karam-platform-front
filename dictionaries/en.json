@@ -115,7 +115,12 @@
     "lectures": "lectures",
     "instructor": "Instructor",
     "noVideoSupport": "Your browser does not support the video tag.",
-    "progressError": "Failed to mark progress."
+    "progressError": "Failed to mark progress.",
+    "examSection": "Exam Section",
+    "examLink": "Exam Link",
+    "examFile": "Exam File",
+    "downloadExam": "Download Exam",
+    "noExamAvailable": "No exam available for this lecture."
   },
   "profile": {
     "editProfile": "Edit Profile",
