@@ -7,7 +7,13 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export async function getDeviceId(): Promise<string> {
-  const fp = await FingerprintJS.load();
-  const result = await fp.get();
-  return result.visitorId;
+  const tokenKey = 'device_token';
+  let deviceToken = localStorage.getItem(tokenKey);
+
+  if (!deviceToken) {
+    deviceToken = crypto.randomUUID(); // Generates a secure UUID
+    localStorage.setItem(tokenKey, deviceToken);
+  }
+
+  return deviceToken;
 }

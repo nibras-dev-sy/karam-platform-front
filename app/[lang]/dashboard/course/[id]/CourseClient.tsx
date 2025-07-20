@@ -38,6 +38,14 @@ export default function CourseClient({ dictionary }: { dictionary: any }) {
   const completedLectures = lectures.filter(l => l.progress).length
   const totalHours = lectures[0]?.course?.totalHours || "20 hours total"
 
+  // Group lectures by unitName
+  const lecturesByUnit: { [unitName: string]: any[] } = lectures.reduce((acc, lecture) => {
+    const unit = lecture.unitName || dictionary.dashboard.noUnit || "No Unit"
+    if (!acc[unit]) acc[unit] = []
+    acc[unit].push(lecture)
+    return acc
+  }, {} as { [unitName: string]: any[] })
+
   if (loading) return <div className="text-center py-10">{dictionary.dashboard.loading || "Loading..."}</div>
   if (error) return <div className="text-center text-red-600 py-10">{error}</div>
 
@@ -67,38 +75,40 @@ export default function CourseClient({ dictionary }: { dictionary: any }) {
           </div>
         </div>
       </div>
-      {/* Lectures List */}
-      <div id="lectures-list" className="space-y-4">
-        <div className="bg-white rounded-lg shadow-sm">
-          <div className="p-4 border-b border-gray-100">
-            <h3 className="text-lg font-bold text-[#213448]">{dictionary.dashboard.lectures || "Lectures"}</h3>
-          </div>
-          <div className="p-4 space-y-3">
-            {lectures.map((lecture, idx) => (
-              <div
-                key={lecture.id}
-                id={`lecture-${lecture.id}`}
-                className={`flex items-center justify-between p-3 ${lecture.progress ? "bg-[#ECEFCA]" : "hover:bg-gray-50"} rounded-lg cursor-pointer`}
-                onClick={() => router.push(`/${lang}/dashboard/course/${courseId}/lecture/${lecture.documentId}`)}
-              >
-                <div className="flex items-center">
-                  {lecture.progress ? (
-                    <i className="fa-solid fa-circle-check text-[#547792] mr-3"></i>
-                  ) : (
-                    <i className="fa-regular fa-circle text-[#547792] mr-3"></i>
-                  )}
-                  <div>
-                    <h4 className="font-medium text-[#213448]">{idx + 1}. {lecture.title}</h4>
-                    <p className="text-sm text-[#547792]">{lecture.description || dictionary.dashboard.noDescription || "No description"}</p>
+      {/* Lectures List by Unit */}
+      <div id="lectures-list" className="space-y-6">
+        {Object.entries(lecturesByUnit).map(([unitName, unitLectures], unitIdx) => (
+          <div key={unitName} className="bg-white rounded-lg shadow-sm">
+            <div className="p-4 border-b border-gray-100 bg-[#ECEFCA] rounded-t-lg">
+              <h3 className="text-lg font-bold text-[#213448]">{unitName}</h3>
+            </div>
+            <div className="p-4 space-y-3">
+              {unitLectures.map((lecture, idx) => (
+                <div
+                  key={lecture.id}
+                  id={`lecture-${lecture.id}`}
+                  className={`flex items-center justify-between p-3 ${lecture.progress ? "bg-[#ECEFCA]" : "hover:bg-gray-50"} rounded-lg cursor-pointer`}
+                  onClick={() => router.push(`/${lang}/dashboard/course/${courseId}/lecture/${lecture.documentId}`)}
+                >
+                  <div className="flex items-center">
+                    {lecture.progress ? (
+                      <i className="fa-solid fa-circle-check text-[#547792] mr-3"></i>
+                    ) : (
+                      <i className="fa-regular fa-circle text-[#547792] mr-3"></i>
+                    )}
+                    <div>
+                      <h4 className="font-medium text-[#213448]">{idx + 1}. {lecture.title}</h4>
+                      <p className="text-sm text-[#547792]">{lecture.description || dictionary.dashboard.noDescription || "No description"}</p>
+                    </div>
                   </div>
+                  <button className="text-[#213448] hover:text-[#547792]">
+                    <i className="fa-solid fa-play"></i>
+                  </button>
                 </div>
-                <button className="text-[#213448] hover:text-[#547792]">
-                  <i className="fa-solid fa-play"></i>
-                </button>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   )

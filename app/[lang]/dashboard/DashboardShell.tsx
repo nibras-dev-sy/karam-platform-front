@@ -29,7 +29,8 @@ export default function DashboardShell({ lang, dictionary, children }: { lang: s
   }, [])
 
   function handleLogout() {
-    localStorage.clear()
+    localStorage.removeItem("strapi_jwt")
+    localStorage.removeItem("strapi_user")
     router.push(`/${lang}/p`)
   }
 

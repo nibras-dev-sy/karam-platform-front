@@ -3,23 +3,10 @@
 import { useEffect, useState } from "react"
 
 export default function ProfileClient({ dictionary }: { dictionary: any }) {
-  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState("")
   const [error, setError] = useState("")
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const userStr = localStorage.getItem("strapi_user")
-      if (userStr) {
-        try {
-          const user = JSON.parse(userStr)
-          setEmail(user.email || "")
-        } catch {}
-      }
-    }
-  }, [])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -39,7 +26,7 @@ export default function ProfileClient({ dictionary }: { dictionary: any }) {
           "Authorization": `Bearer ${jwt}`,
         },
         body: JSON.stringify({
-          email,
+          email: user.email,
           ...(password ? { password } : {}),
         }),
       })
@@ -59,18 +46,6 @@ export default function ProfileClient({ dictionary }: { dictionary: any }) {
     <div className="max-w-lg mx-auto p-8 bg-white rounded-lg shadow mt-10">
       <h1 className="text-2xl font-bold text-[#213448] mb-6">{dictionary.profile.editProfile || "Edit Profile"}</h1>
       <form onSubmit={handleSubmit}>
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-[#213448] mb-2" htmlFor="email">{dictionary.profile.email || "Email"}</label>
-          <input
-            id="email"
-            type="email"
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#547792] focus:border-[#547792]"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-            disabled={loading}
-          />
-        </div>
         <div className="mb-6">
           <label className="block text-sm font-medium text-[#213448] mb-2" htmlFor="password">{dictionary.profile.newPassword || "New Password"}</label>
           <input
