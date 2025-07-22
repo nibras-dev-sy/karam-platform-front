@@ -120,7 +120,8 @@
     "examLink": "Exam Link",
     "examFile": "Exam File",
     "downloadExam": "Download Exam",
-    "noExamAvailable": "No exam available for this lecture."
+    "noExamAvailable": "No exam available for this lecture.",
+    "uploadVideo": "Upload Video"
   },
   "profile": {
     "editProfile": "Edit Profile",

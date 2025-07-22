@@ -109,4 +109,33 @@ export async function markLectureProgressStrapi(lectureDocumentId: string, jwt: 
     throw new Error(data?.error?.message || data?.message || "Failed to mark progress")
   }
   return data
+}
+
+export async function getLectureUploadUrlStrapi(filename: string, contentType: string, jwt: string) {
+  const res = await fetch(`${STRAPI_URL}/api/lectures/upload-url?filename=${encodeURIComponent(filename)}&contentType=${encodeURIComponent(contentType)}`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+  })
+  if (!res.ok) {
+    throw new Error("Failed to get upload URL")
+  }
+  return await res.json() // expects { url, key }
+}
+
+export async function updateLectureVideoUrlStrapi(lectureId: string, videoUrl: string, jwt: string) {
+  const res = await fetch(`${STRAPI_URL}/api/lectures/${lectureId}`, {
+    method: "PUT",
+    headers: {
+      "Authorization": `Bearer ${jwt}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ data: { videoUrl } }),
+  })
+  if (!res.ok) {
+    throw new Error("Failed to update lecture video URL")
+  }
+  return await res.json()
 } 

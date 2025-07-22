@@ -120,7 +120,8 @@
     "examLink": "رابط الامتحان",
     "examFile": "ملف الامتحان",
     "downloadExam": "تحميل الامتحان",
-    "noExamAvailable": "لا يوجد امتحان متاح لهذه المحاضرة."
+    "noExamAvailable": "لا يوجد امتحان متاح لهذه المحاضرة.",
+    "uploadVideo": "رفع الفيديو"
   },
   "profile": {
     "editProfile": "تعديل الملف الشخصي",
